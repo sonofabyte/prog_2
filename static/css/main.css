@@ -5,3 +5,12 @@ body {
     background-size: cover;
     -o-background-size: cover;
 }
+
+.vcenter {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.space-out {
+    margin-top: 10vh;
+}

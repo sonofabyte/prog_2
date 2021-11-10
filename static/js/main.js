@@ -1,1 +1,1 @@
-alert("im alive");
+//alert("im alive");
