@@ -1,4 +1,7 @@
-from flask import Flask, render_template, send_from_directory
+import sqlite3
+from flask import Flask, render_template, send_from_directory, request, redirect, url_for, g
+
+DATABASE = 'notes.db'
 
 app = Flask(__name__)
 
@@ -8,7 +11,7 @@ def hello_world():
 
 @app.route("/notes")
 def notes():
-    return render_template('notes.html')
+    return render_template('notes.html')        
 
 @app.route('/js/<path:path>')
 def send_js(path):

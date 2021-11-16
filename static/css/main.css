@@ -14,3 +14,12 @@ body {
 .space-out {
     margin-top: 10vh;
 }
+
+.special-card {    
+      /*background-color: rgba(245, 245, 245, 1);*/
+      opacity: .6;
+}
+
+.special-card a:link{
+    opacity: 1;
+}

@@ -1,5 +1,13 @@
 # Sticky Notes (App)
 
+A small, lightweight note taking app.
+
+## Usage
+
+1. **Install Flask...**
+1. type ```export FLASK_APP=app.py```, windows users use ```set FLASK_APP=app.py```
+1. type ```flask run```
+
 ## Image Licenses
 
 ### Background Images
