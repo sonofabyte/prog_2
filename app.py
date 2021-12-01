@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, render_template, send_from_directory, request, redirect, url_for, g
+from flask import Flask, render_template, send_from_directory, request, redirect, url_for, g, session
 
 DATABASE = 'notes.db'
 
@@ -16,14 +16,20 @@ def query_db(query, args=(), one=False):
     return (rv[0] if rv else None) if one else rv
 
 app = Flask(__name__)
+app.secret_key = 'any random string'
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return redirect(url_for('notes'))
 
-@app.route("/notes")
+@app.route("/notes", methods = ['GET', 'POST'])
 def notes():
-    return render_template('notes.html')        
+    if request.method == 'GET':
+        notes = query_db("select * from notes")
+        print(notes)
+        return render_template('notes.html')
+    if request.method == 'POST':
+        return render_template('notes.html')
 
 @app.route('/js/<path:path>')
 def send_js(path):

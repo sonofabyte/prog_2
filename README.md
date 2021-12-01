@@ -8,6 +8,11 @@ A small, lightweight note taking app.
 1. type ```export FLASK_APP=app.py```, windows users use ```set FLASK_APP=app.py```
 1. type ```flask run```
 
+## Features
+
+- Write plaintext notes with fancy titles
+- 
+
 ## Image Licenses
 
 ### Background Images
