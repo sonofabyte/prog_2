@@ -49,30 +49,30 @@
                             button below!</p>
                         <footer class="blockquote-footer">Someone famous <cite title="Source Title">Sticky Notes
                                 TM</cite></footer>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newNote">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newNote" data-bs-edit="false">
                             Add new Note
                         </button>
                     </div>
                 </div>
             </div>
 
+            {% for card in cards %}
             <div class="col-3">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <h5 class="card-title">{{ card["Title"] }}</h5>
+                        <p class="card-text">{{ card["Content"] }}</p>
                     </div>
                     <div class="card-body">
-                        <a href="#" class="card-link">Edit</a>
-                        <a href="#" class="card-link">Delete</a>
+                        <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#newNote" data-bs-item="{{ card['ID'] }}" data-bs-edit="true">Edit</a>
+                        <a href="#" class="card-link" onclick="delNote('{{ card["ID"] }}')">Delete</a>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
+                        <small class="text-muted">Last modified {{ card["Modified"] }} days ago.</small>
                     </div>
                 </div>
             </div>
-
+            {% endfor %}
         </div>
     </div>
 
@@ -84,17 +84,17 @@
                     <h5 class="modal-title" id="exampleModalLabel">Write something down, young padawan.</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="openDoorForm" method="POST" , action="/backend/modItem.php">
+                <form id="openDoorForm" method="POST" , action="/api/modNote">
                     <div class="modal-body">
                         <div class="form-check">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Note Title</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                                <input id="titleedit" type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" name="title">
                             </div>
 
                             <div class="input-group">
-                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                <textarea class="form-control" id="textedit" aria-label="With textarea" name="content"></textarea>
                             </div>
 
                             <input type="text" name="itemID" value="" id="idField" hidden="true">
