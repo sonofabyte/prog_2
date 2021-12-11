@@ -2,11 +2,12 @@
 
 function delNote(id) {
   $.ajax({
-    url: "/api/modNote",
+    url: "/api/delNote",
     method: "POST",
-    data: { item_id: id, process: "get"},
+    data: { item_id: id },
   }).done(function(response) {
     console.log(response);
+    location.reload();
 
   }).fail(function( jqXHR, textStatus ) {
     alert("fail");
