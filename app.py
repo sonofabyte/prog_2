@@ -81,20 +81,31 @@ def modNote():
 
 @app.route('/api/delNote', methods = ['POST'])
 def delNote():
+    """
+    Route: /api/delNote
+    Methods: POST
+    Form Data: item_id (the ID of the note in SQLite DB)
+
+    Takes ID as POST parameter and deletes row in DB matching the ID
+    """
+
     print("delNote ", request.form["item_id"])
     write_db('delete from notes where ID = ?', [request.form.get("item_id", int)])
     return dict() #return something, doesn't matter
 
 @app.route('/js/<path:path>')
 def send_js(path):
+    """ Serves static JavaScript content """
     return send_from_directory('static/js', path)
 
 @app.route('/css/<path:path>')
 def send_css(path):
+    """ Serves static CSS content """
     return send_from_directory('static/css', path)
 
 @app.route('/media/<path:path>')
 def send_media(path):
+    """ Serves static Media content (images, or whatever is in that media folder) """
     return send_from_directory('static/media', path)
 
 if __name__ == '__main__':

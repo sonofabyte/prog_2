@@ -11,7 +11,16 @@ A small, lightweight note taking app.
 ## Features
 
 - Write plaintext notes with fancy titles
-- 
+- Modify notes
+- Delete notes
+
+## Sources and Inspirations
+
+The code is, by large, written by me. I used snippets from:
+
+- Python Flask Documentation (*url*)
+- Bootstrap Documentation (*getbootstrap.com*)
+- SQLite documentation (*URL*)
 
 ## Image Licenses
 
