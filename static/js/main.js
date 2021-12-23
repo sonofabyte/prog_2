@@ -1,5 +1,9 @@
-//alert("im alive");
-
+/**
+ * 
+ * delete note from database
+ * 
+ * send a POST request to server with the note ID to be deleted
+ */
 function delNote(id) {
   $.ajax({
     url: "/api/delNote",
@@ -10,13 +14,21 @@ function delNote(id) {
     location.reload();
 
   }).fail(function( jqXHR, textStatus ) {
-    alert("fail");
+    //Request was unsuccessful
+    alert("Failed deleting note.");
   });
 }
 
+// get a reference to the note edit modal
 var exampleModal = document.getElementById('newNote')
 
-//configure modal content on open
+/**
+ * configure modal content on open
+ *
+ * request note to edit as JSON from server
+ * set text of form in modal from JSON 
+ * 
+ */
 exampleModal.addEventListener('show.bs.modal', function (event) {
     var button = event.relatedTarget;
     var itemN = 0;
@@ -40,10 +52,12 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
           });
     }
     else{
+      // no note to edit -> reset form to be empty
       title_edit.value = "";
       text_edit.value = "";
     }
 
+    //set invisible field to note ID
     idField.value = itemN;
 
 })

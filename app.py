@@ -6,12 +6,22 @@ import datetime
 DATABASE = 'notes.db'
 
 def get_db():
+    """
+    uses Flask to make connection to Sqlite DB
+
+    code shamelessly stolen from Flask tutorial page
+    """
     db = getattr(g, '_database', None)
     if db is None:
         db = g._database = sqlite3.connect(DATABASE)
     return db
 
 def query_db(query, args=(), one=False):
+    """
+    uses sb 
+
+    code shamelessly stolen from Flask tutorial page
+    """
     cur = get_db().execute(query, args)
     rv = cur.fetchall()
     cur.close()
@@ -19,6 +29,9 @@ def query_db(query, args=(), one=False):
 
 
 def write_db(query, args=(), one=False):
+    """
+    uses
+    """
     cur = get_db().execute(query, args)
     get_db().commit()
     cur.close()
@@ -28,10 +41,18 @@ app.secret_key = 'any random string'
 
 @app.route("/")
 def hello_world():
+    """
+    this is the default route, just like the "index.html" file of a website. it however instantly redirects to the notes site.
+    """
     return redirect(url_for('notes'))
 
 @app.route("/notes", methods = ['GET', 'POST'])
 def notes():
+    """
+    Route: /notes
+    Methods: GET, POST
+    """
+
     if request.method == 'GET':
         notes = query_db("select * from notes")
 
@@ -42,7 +63,7 @@ def notes():
             card["ID"] = note[0]
             card["Title"] = note[1]
             card["Content"] = note[2]
-            note_date = datetime.datetime.strptime(note[3], '%d/%m/%y %H:%M:%S')
+            note_date = datetime.datetime.strptime(note[3], '%d/%m/%y %H:%M:%S') #parse datetime from SQL query as SQlite stores it as string
             now_date = datetime.datetime.now()
             date_delta = now_date - note_date
             card["Modified"] = date_delta.days
@@ -54,6 +75,16 @@ def notes():
 
 @app.route('/api/modNote', methods = ['POST'])
 def modNote():
+    """
+    Route: /api/modNote
+    Methods: POST
+    Form Data:
+
+    This endpoint serves three purposes:
+        1. insert a new note into the database when the itemID field in the form is 0 (the SqliteDB generates a unique ID).
+        2. edit an existing note in the database when the itemID field in the form is something else than 0 (Note in DB gets overwritten by new note).
+        3. return a specific note in JSON format. the item_id field in POST body specifies the note. also a field named process with the value "get" has to be supplied.
+    """
     if not ("process" in request.form):
         content = request.form.get("content", Text)
         title = request.form.get("title", Text)
@@ -111,6 +142,7 @@ def send_media(path):
 if __name__ == '__main__':
     app.run(debug=True)
 
+# shut down SQlite on exit
 @app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, '_database', None)

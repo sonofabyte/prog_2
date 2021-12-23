@@ -18,12 +18,15 @@ A small, lightweight note taking app.
 
 The code is, by large, written by me. I used snippets from:
 
-- Python Flask Documentation (*url*)
-- Bootstrap Documentation (*getbootstrap.com*)
-- SQLite documentation (*URL*)
+- Python Flask Documentation <https://flask.palletsprojects.com/en/2.0.x/>
+  - How Routes, redirects, database connections work
+  - How to get flask to run in debug mode
+- Bootstrap Documentation <https://getbootstrap.com>
+- SQLite language reference <https://www.sqlite.org/lang.html>
 
 ## Image Licenses
 
 ### Background Images
 All used background images are provided free of charge from Unsplash.com
 - ```static/media/bg01.jpg```: Birger Strahl, Lüneburger Heide, Deutschland
+- ```static/media/bg02.jpg```: Michael Benz, Elbow Falls, Kananaskis, Canada
