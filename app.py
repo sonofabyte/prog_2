@@ -18,7 +18,7 @@ def get_db():
 
 def query_db(query, args=(), one=False):
     """
-    uses sb 
+    uses Flask to make connection to Sqlite DB
 
     code shamelessly stolen from Flask tutorial page
     """
@@ -30,7 +30,7 @@ def query_db(query, args=(), one=False):
 
 def write_db(query, args=(), one=False):
     """
-    uses
+    uses Flask to execute a write query (or query that doesn't return results) on Sqlite DB
     """
     cur = get_db().execute(query, args)
     get_db().commit()
@@ -40,7 +40,7 @@ app = Flask(__name__)
 app.secret_key = 'any random string'
 
 @app.route("/")
-def hello_world():
+def default_route():
     """
     this is the default route, just like the "index.html" file of a website. it however instantly redirects to the notes site.
     """
