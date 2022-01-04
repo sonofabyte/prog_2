@@ -11,4 +11,3 @@
   - time/date
   - title
   - content
-  

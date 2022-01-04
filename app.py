@@ -122,7 +122,7 @@ def delNote():
 
     print("delNote ", request.form["item_id"])
     write_db('delete from notes where ID = ?', [request.form.get("item_id", int)])
-    return dict() #return something, doesn't matter
+    return dict() #return something, doesn't matter what
 
 @app.route('/js/<path:path>')
 def send_js(path):
