@@ -3,6 +3,7 @@
 - [x] create new notes
 - [x] delete notes
 - [x] modify notes
+- [x] show modification date of note
 
 ## DB structure
 
