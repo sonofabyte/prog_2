@@ -3,6 +3,8 @@
  * delete note from database
  * 
  * send a POST request to server with the note ID to be deleted
+ * 
+ * with help from stack overflow
  */
 function delNote(id) {
   $.ajax({
@@ -28,6 +30,7 @@ var exampleModal = document.getElementById('newNote')
  * request note to edit as JSON from server
  * set text of form in modal from JSON 
  * 
+ * mostly taken from getbootstrap
  */
 exampleModal.addEventListener('show.bs.modal', function (event) {
     var button = event.relatedTarget;

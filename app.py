@@ -1,6 +1,5 @@
 import sqlite3
-from typing import Text
-from flask import Flask, render_template, send_from_directory, request, redirect, url_for, g, session
+from flask import Flask, render_template, send_from_directory, request, redirect, url_for, g
 import datetime
 
 DATABASE = 'notes.db'
@@ -54,7 +53,7 @@ def notes():
     """
 
     if request.method == 'GET':
-        notes = query_db("select * from notes")
+        notes = query_db("select * from notes") # inspiration from flas SQLite documentation
 
         cards = []
 
@@ -63,7 +62,7 @@ def notes():
             card["ID"] = note[0]
             card["Title"] = note[1]
             card["Content"] = note[2]
-            note_date = datetime.datetime.strptime(note[3], '%d/%m/%y %H:%M:%S') #parse datetime from SQL query as SQlite stores it as string
+            note_date = datetime.datetime.strptime(note[3], '%d/%m/%y %H:%M:%S') #parse datetime from SQL query as SQlite stores it as string, inspiration from stack overflow
             now_date = datetime.datetime.now()
             date_delta = now_date - note_date
             card["Modified"] = date_delta.days
@@ -73,6 +72,7 @@ def notes():
     if request.method == 'POST':
         return render_template('notes.html')
 
+# inspiration: https://www.geeksforgeeks.org/retrieving-html-from-data-using-flask/
 @app.route('/api/modNote', methods = ['POST'])
 def modNote():
     """
@@ -91,7 +91,6 @@ def modNote():
         post_id = request.form.get("itemID", int)
 
         time_now_string = datetime.datetime.now().strftime('%d/%m/%y %H:%M:%S')
-        print(time_now_string)
 
         if int(request.form["itemID"]) == 0:
             # make new note in DB
@@ -120,11 +119,11 @@ def delNote():
     Takes ID as POST parameter and deletes row in DB matching the ID
     """
 
-    print("delNote ", request.form["item_id"])
     write_db('delete from notes where ID = ?', [request.form.get("item_id", int)])
     return dict() #return something, doesn't matter what
 
-@app.route('/js/<path:path>')
+#Source: https://stackoverflow.com/questions/20646822/how-to-serve-static-files-in-flask
+@app.route('/js/<path:path>') 
 def send_js(path):
     """ Serves static JavaScript content """
     return send_from_directory('static/js', path)
