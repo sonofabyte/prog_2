@@ -14,6 +14,11 @@ A small, lightweight note taking app.
 - Modify notes
 - Delete notes
 
+## Project Idea
+
+I am a person who always has Post-It notes everywhere. That was the origin of the idea for a Notes app.
+I wanted to make the app as simple as possible.
+
 ## Sources and Inspirations
 
 The code is, by large, written by me. I used snippets from:
@@ -27,6 +32,8 @@ The code is, by large, written by me. I used snippets from:
 ## Image Licenses
 
 ### Background Images
+
 All used background images are provided free of charge from Unsplash.com
+
 - ```static/media/bg01.jpg```: Birger Strahl, Lüneburger Heide, Deutschland
 - ```static/media/bg02.jpg```: Michael Benz, Elbow Falls, Kananaskis, Canada
