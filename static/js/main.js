@@ -41,7 +41,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
 
     if (button.getAttribute('data-bs-edit') == "true"){
         itemN = button.getAttribute('data-bs-item');
-        $.ajax({
+        $.ajax({ //googled jquery http request
             url: "/api/modNote",
             method: "POST",
             data: { item_id: itemN, process: "get"},

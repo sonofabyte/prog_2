@@ -73,6 +73,7 @@ def notes():
         return render_template('notes.html')
 
 # inspiration: https://www.geeksforgeeks.org/retrieving-html-from-data-using-flask/
+# diese funktion wird von javascript benutzt. das html template hat ein formular, dass wenn man eine notiz editiert, das js eine anfrage an die funktion schickt, damit das js von dieser funktion eine antwort bekommt mit dem inhalt der notiz, der in das formular gespeist wird.
 @app.route('/api/modNote', methods = ['POST'])
 def modNote():
     """
@@ -109,6 +110,7 @@ def modNote():
         resp["content"] = note[2]
         return resp
 
+#diese funktion wird von javascript aufgerufen um eine notiz zu löschen
 @app.route('/api/delNote', methods = ['POST'])
 def delNote():
     """
@@ -120,7 +122,7 @@ def delNote():
     """
 
     write_db('delete from notes where ID = ?', [request.form.get("item_id", int)])
-    return dict() #return something, doesn't matter what
+    return dict() #return something, doesn't matter what (otherwise flask crashes)
 
 #Source: https://stackoverflow.com/questions/20646822/how-to-serve-static-files-in-flask
 @app.route('/js/<path:path>') 
