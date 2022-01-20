@@ -1,39 +1,29 @@
 # Sticky Notes (App)
 
-A small, lightweight note taking app.
+Eine kleine, einfache App für Notizen.
 
-## Usage
+## Verwendung
 
 1. **Install Flask...**
 1. type ```export FLASK_APP=app.py```, windows users use ```set FLASK_APP=app.py```
 1. type ```flask run```
 
-## Features
+## Funktionen
 
-- Write plaintext notes with fancy titles
-- Modify notes
-- Delete notes
+- Schreiben von Textnotizen mit  Titeln
+- Ändern von Notizen
+- Notizen löschen
 
-## Project Idea
+## Quellen und Inspirationen
 
-I am a person who always has Post-It notes everywhere. That was the origin of the idea for a Notes app.
-I wanted to make the app as simple as possible.
+- Python Flask Dokumentation <https://flask.palletsprojects.com/en/2.0.x/>
+  - Wie Routes, Redirects, Datenbankverbindungen funktionieren
+  - Wie man Flask dazu bringt, im Debug-Modus zu laufen
+- Bootstrap-Dokumentation <https://getbootstrap.com>
+- SQLite Sprachreferenz <https://www.sqlite.org/lang.html>
+- SQLite mit Flask verwenden <https://flask.palletsprojects.com/en/2.0.x/patterns/sqlite3/>
 
-## Sources and Inspirations
-
-The code is, by large, written by me. I used snippets from:
-
-- Python Flask Documentation <https://flask.palletsprojects.com/en/2.0.x/>
-  - How Routes, redirects, database connections work
-  - How to get flask to run in debug mode
-- Bootstrap Documentation <https://getbootstrap.com>
-- SQLite language reference <https://www.sqlite.org/lang.html>
-
-## Image Licenses
-
-### Background Images
-
-All used background images are provided free of charge from Unsplash.com
-
+### Hintergrundbilder
+Alle verwendeten Hintergrundbilder werden kostenlos von Unsplash.com zur Verfügung gestellt
 - ```static/media/bg01.jpg```: Birger Strahl, Lüneburger Heide, Deutschland
 - ```static/media/bg02.jpg```: Michael Benz, Elbow Falls, Kananaskis, Canada
