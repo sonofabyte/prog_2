@@ -1,5 +1,6 @@
 import sqlite3
 from flask import Flask, render_template, send_from_directory, request, redirect, url_for, g
+from typing import Text
 import datetime
 
 DATABASE = 'notes.db'
